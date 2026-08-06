@@ -1,11 +1,11 @@
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 
 interface CardProps {
   title?: string;
-  children: string;
+  children: ReactNode;
 }
 
-export function Card({ title, children }: CardProps) {
+export function Card({ title = "", children }: CardProps) {
   return (
     <div
       style={{
@@ -25,7 +25,7 @@ export function Card({ title, children }: CardProps) {
           {title}
         </h3>
       )}
-      <p style={{ color: "#666" }}>{children}</p>
+      {children}
     </div>
   );
 }
