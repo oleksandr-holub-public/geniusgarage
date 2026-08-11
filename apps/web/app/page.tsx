@@ -36,6 +36,9 @@ export default function Home() {
         </h1>
         <p style={{ fontSize: "1.5rem", color: "#666", marginBottom: "2rem" }}>
           Store your genius code snippets
+          <span>
+            <b>Test</b>
+          </span>
         </p>
 
         {/* Inline Button - we'll extract this to a shared package in Section 1 */}
