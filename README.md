@@ -35,3 +35,9 @@ pnpm dev
 - [Turborepo Documentation](https://turbo.build/repo/docs)
 - [pnpm Documentation](https://pnpm.io)
 - [Next.js Documentation](https://nextjs.org/docs)
+
+## Deployed apps
+ 
+- Marketing Site: https://your-project.vercel.app
+- Snippet Manager: https://geniusgarage-app.vercel.app
+
