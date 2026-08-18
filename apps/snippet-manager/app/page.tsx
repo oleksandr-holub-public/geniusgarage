@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@geniusgarage/ui/button";
-import { Card } from "@geniusgarage/ui/card";
 import { SnippetCard } from "@geniusgarage/ui/snippet-card";
 import { useState } from "react";
 
