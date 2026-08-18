@@ -3,6 +3,7 @@
 import { Button } from "@geniusgarage/ui/button";
 import { SnippetCard } from "@geniusgarage/ui/snippet-card";
 import { useState } from "react";
+import { formatDate } from "@geniusgarage/utilities";
 
 interface Snippet {
   id: number;
@@ -10,7 +11,7 @@ interface Snippet {
   language: string;
   code: string;
   tags: string[];
-  createdAt: string; // Add this field
+  createdAt: Date; // Add this field
 }
 
 const initialSnippets: Snippet[] = [
@@ -20,7 +21,7 @@ const initialSnippets: Snippet[] = [
     language: "javascript",
     code: "const sum = arr.reduce((acc, n) => acc + n, 0)",
     tags: ["javascript", "array", "functional"],
-    createdAt: "Jan 15, 2026", // Add this
+    createdAt: new Date("2024-01-15"), // Date object
   },
   {
     id: 2,
@@ -31,7 +32,7 @@ const initialSnippets: Snippet[] = [
   return () => clearTimeout(timer)
 }, [])`,
     tags: ["react", "hooks", "typescript"],
-    createdAt: "Feb 20, 2026", // Add this
+    createdAt: new Date("2024-02-20"), // Date object
   },
   {
     id: 3,
@@ -39,12 +40,13 @@ const initialSnippets: Snippet[] = [
     language: "javascript",
     code: "const results = await Promise.all(promises.map(p => p()))",
     tags: ["javascript", "async", "promises"],
-    createdAt: "Mar 10, 2026", // Add this
+    createdAt: new Date("2024-03-10"), // Date object
   },
 ];
 
 export default function Home() {
   const [snippets, setSnippets] = useState(initialSnippets);
+
   const [showModal, setShowModal] = useState(false);
   const [newSnippet, setNewSnippet] = useState({
     title: "",
@@ -67,11 +69,7 @@ export default function Home() {
         .split(",")
         .map((t) => t.trim())
         .filter(Boolean),
-      createdAt: new Date().toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      }),
+      createdAt: new Date(),
     };
 
     // Add to snippets array (newest first)
@@ -260,7 +258,11 @@ export default function Home() {
         {/* Snippet Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {snippets.map((snippet) => (
-            <SnippetCard {...snippet} key={snippet.id} />
+            <SnippetCard
+              {...snippet}
+              createdAt={formatDate(snippet.createdAt)}
+              key={snippet.id}
+            />
           ))}
         </div>
       </div>

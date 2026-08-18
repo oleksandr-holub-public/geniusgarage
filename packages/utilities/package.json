@@ -1,0 +1,19 @@
+{
+  "name": "@geniusgarage/utilities",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@geniusgarage/typescript-config": "workspace:*",
+    "@geniusgarage/eslint-config": "workspace:*",
+    "eslint": "^9",
+    "typescript": "^5"
+  }
+}
