@@ -19,6 +19,10 @@ export function Button({
     cursor: "pointer",
     fontWeight: "600",
   };
+  const variants = {
+    primary: "bg-blue-500 text-white hover:bg-blue-600", // Changed blue to red
+    secondary: "bg-gray-200 text-gray-900 hover:bg-gray-300",
+  };
 
   const variantStyles = {
     primary: {
@@ -35,6 +39,7 @@ export function Button({
   return (
     <button
       onClick={onClick}
+      className={variants[variant]}
       style={{ ...baseStyles, ...variantStyles[variant] }}
     >
       {children}
