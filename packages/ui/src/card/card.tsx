@@ -2,10 +2,12 @@ import { ReactNode } from "react";
 
 interface CardProps {
   title?: string;
+  className?: string;
   children: ReactNode;
 }
 
-export function Card({ title = "", children }: CardProps) {
+export function Card({ title = "", className = "", children }: CardProps) {
+  const classes = ["bg-white", "rounded-lg", className];
   return (
     <div
       style={{
@@ -13,6 +15,7 @@ export function Card({ title = "", children }: CardProps) {
         border: "1px solid #e5e7eb",
         borderRadius: "0.5rem",
       }}
+      className={classes.join(" ")}
     >
       {title && (
         <h3
@@ -25,7 +28,7 @@ export function Card({ title = "", children }: CardProps) {
           {title}
         </h3>
       )}
-      {children}
+      <div>{children}</div>
     </div>
   );
 }

@@ -5,10 +5,10 @@
   "types": "./src/index.ts",
   "type": "module",
   "exports": {
-    "./card": "./src/card.tsx",
-    "./button": "./src/button.tsx",
-    "./code-block": "./src/code-block.tsx",
-    "./snippet-card": "./src/snippet-card.tsx"
+    "./card": "./src/card/card.tsx",
+    "./button": "./src/button/button.tsx",
+    "./code-block": "./src/code-block/code-block.tsx",
+    "./snippet-card": "./src/snippet-card/snippet-card.tsx"
   },
   "scripts": {
     "build": "tsc --noEmit",
@@ -26,6 +26,7 @@
     "@types/jest": "^30.0.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "4.1.11",
     "jsdom": "^30.0.1",
     "typescript": "^5",
     "vitest": "^4.1.11"

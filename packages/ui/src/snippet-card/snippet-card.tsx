@@ -1,5 +1,5 @@
-import { Card } from "./card";
-import { CodeBlock } from "./code-block";
+import { Card } from "../card/card";
+import { CodeBlock } from "../code-block/code-block";
 
 export interface SnippetCardProps {
   title: string;

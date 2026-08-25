@@ -1,5 +1,5 @@
 // Components will be exported from here
-export { Card } from "./card";
-export { Button } from "./button";
-export { SnippetCard } from "./snippet-card";
-export { CodeBlock } from "./code-block";
+export { Card } from "./card/card";
+export { Button } from "./button/button";
+export { SnippetCard } from "./snippet-card/snippet-card";
+export { CodeBlock } from "./code-block/code-block";
