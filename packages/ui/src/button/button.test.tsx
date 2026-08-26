@@ -6,6 +6,7 @@ describe("Button component", () => {
   it("renders with children", () => {
     render(<Button>Click me</Button>);
     expect(screen.getByText("Click me")).toBeInTheDocument();
+    // Added comment - hash changes
   });
 
   it("applies primary variant by default", () => {

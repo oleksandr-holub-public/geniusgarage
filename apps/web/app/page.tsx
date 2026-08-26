@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Button } from "@geniusgarage/ui/button";
 
 export default function Home() {
+  // Changed app code, not packages/ui
+
   return (
     <main
       style={{
