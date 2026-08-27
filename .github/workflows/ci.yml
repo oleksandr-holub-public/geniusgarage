@@ -42,16 +42,17 @@ jobs:
           path: |
             apps/web/.next/cache
             apps/snippet-manager/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('apps/**/*.{js,jsx,ts,tsx}', 'packages/**/*.{js,jsx,ts,tsx}') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('apps/**/*.ts', 'apps/**/*.tsx', 'apps/**/*.js', 'apps/**/*.jsx', 'packages/**/*.ts', 'packages/**/*.tsx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run build, lint, and test (changed packages only)
-        run: pnpm exec turbo build lint test --filter="...[$BASE_REF]"
+      - name: Run build, lint, and test
+        run: pnpm exec turbo build lint test $FILTER
         env:
-          # On a PR compare against the target branch; on a push to main the
-          # branch tip IS HEAD, so compare against the previous commit instead.
-          BASE_REF: ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || 'HEAD^1' }}
+          # PRs only check what changed against the target branch (plus dependents).
+          # Pushes to main run everything: root-level changes (lockfile, turbo.json)
+          # map to the "//" package alone, which has no tasks and would verify nothing.
+          FILTER: ${{ github.event_name == 'pull_request' && format('--filter=...[origin/{0}]', github.base_ref) || '' }}
