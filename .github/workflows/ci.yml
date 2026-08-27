@@ -28,13 +28,17 @@ jobs:
           node-version: 24
           cache: 'pnpm'
 
-      - name: Cache Turborepo
-        uses: actions/cache@v4
-        with:
-          path: .turbo/cache
-          key: ${{ runner.os }}-turbo-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-turbo-
+      # Disabled in favour of Turborepo Remote Caching (TURBO_TOKEN / TURBO_TEAM).
+      # The local cache always wins over the remote one, which kept remote caching
+      # idle and made it impossible to tell from the logs whether it worked at all.
+      # Re-enable only if remote caching is turned off.
+      # - name: Cache Turborepo
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: .turbo/cache
+      #     key: ${{ runner.os }}-turbo-${{ github.sha }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-turbo-
 
       - name: Cache Next.js build cache
         uses: actions/cache@v4
