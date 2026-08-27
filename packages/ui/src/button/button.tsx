@@ -5,7 +5,7 @@ interface ButtonProps {
   variant?: "primary" | "secondary";
   onClick?: () => void;
 }
-// Add comment 2
+// Add comment 3
 export function Button({
   variant = "primary",
   onClick,
